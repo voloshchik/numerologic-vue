@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <form class="card">
+    <form class="card" @submit.prevent="submitHandler">
       <h1>Анкета на Vue разработчика!</h1>
       <!--      <div class="form-control" :class="{invalid: errors.name}">-->
       <!--        <label for="name">Как тебя зовут?</label>-->
@@ -13,16 +13,21 @@
       <!--        <small v-if="errors.name">{{ errors.name }}</small>-->
       <!--      </div>-->
 
-      <app-input placeholder="Введи имя" label="Как тебя зовут?"></app-input>
+      <!-- <app-input placeholder="Введи имя" label="Как тебя зовут?"></app-input> -->
+
+      <div class="form-control">
+        <label for="name">Как тебя зовут?</label>
+        <input type="text" name="name" id="name" />
+      </div>
 
       <div class="form-control">
         <label for="age">Выбери возраст</label>
-        <input type="number" id="age" max="70" v-model.number="age" />
+        <input type="number" id="age" max="70" />
       </div>
 
       <div class="form-control">
         <label for="city">Твой город</label>
-        <select id="city" v-model="city">
+        <select id="city">
           <option value="spb">Санкт-Петербург</option>
           <option value="msk">Москва</option>
           <option value="kzn">Казань</option>
@@ -67,7 +72,13 @@
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    submitHandler(e) {
+      console.log('submit')
+    },
+  },
+}
 </script>
 
 <style>
