@@ -38,24 +38,29 @@
       <div class="form-checkbox">
         <span class="label">Готов к переезду в Токио?</span>
         <div class="checkbox">
-          <label><input type="radio" name="trip" value="yes" /> Да</label>
+          <label><input type="radio" v-model="relocate" name="trip" value="yes" /> Да</label>
         </div>
 
         <div class="checkbox">
-          <label><input type="radio" name="trip" value="no" /> Нет</label>
+          <label><input type="radio" v-model="relocate" name="trip" value="no" /> Нет</label>
         </div>
       </div>
 
       <div class="form-checkbox">
         <span class="label">Что знаешь во Vue?</span>
         <div class="checkbox">
-          <label><input type="checkbox" name="skills" value="vuex" /> Vuex</label>
+          <label><input type="checkbox" v-model="skills" name="skills" value="vuex" /> Vuex</label>
         </div>
         <div class="checkbox">
-          <label><input type="checkbox" name="skills" value="cli" /> Vue CLI</label>
+          <label
+            ><input type="checkbox" v-model="skills" name="skills" value="cli" /> Vue CLI</label
+          >
         </div>
         <div class="checkbox">
-          <label><input type="checkbox" name="skills" value="router" /> Vue Router</label>
+          <label
+            ><input type="checkbox" v-model="skills" name="skills" value="router" /> Vue
+            Router</label
+          >
         </div>
       </div>
 
@@ -78,6 +83,8 @@ export default {
       name: '',
       age: 32,
       city: 'nsk',
+      relocate: null,
+      skills: [],
     }
   },
   methods: {
@@ -86,6 +93,8 @@ export default {
       console.log('Name', this.name)
       console.log('Age', this.age)
       console.log('city', this.city)
+      console.log('relocate', this.relocate)
+      console.log('skills', this.skills)
       console.groupEnd()
     },
   },
