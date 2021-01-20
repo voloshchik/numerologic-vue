@@ -17,12 +17,12 @@
 
       <div class="form-control">
         <label for="name">Как тебя зовут?</label>
-        <input type="text" name="name" id="name" />
+        <input v-model.trim="name" type="text" name="name" id="name" />
       </div>
 
       <div class="form-control">
         <label for="age">Выбери возраст</label>
-        <input type="number" id="age" max="70" />
+        <input v-model.number="age" type="number" id="age" max="70" />
       </div>
 
       <div class="form-control">
@@ -73,9 +73,18 @@
 
 <script>
 export default {
+  data() {
+    return {
+      name: '',
+      age: 32,
+    }
+  },
   methods: {
     submitHandler(e) {
-      console.log('submit')
+      console.group('form data')
+      console.log('Name', this.name)
+      console.log('Age', this.age)
+      console.groupEnd()
     },
   },
 }
