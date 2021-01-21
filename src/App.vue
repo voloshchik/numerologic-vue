@@ -15,9 +15,10 @@
 
       <!-- <app-input placeholder="Введи имя" label="Как тебя зовут?"></app-input> -->
 
-      <div class="form-control">
+      <div class="form-control" :class="{ invalid: error.name }">
         <label for="name">Как тебя зовут?</label>
         <input v-model.trim="name" type="text" name="name" id="name" />
+        <small v-if="error.name">{{ error.name }}</small>
       </div>
 
       <div class="form-control">
@@ -85,17 +86,32 @@ export default {
       city: 'nsk',
       relocate: null,
       skills: [],
+      error: {
+        name: null,
+      },
     }
   },
   methods: {
+    formIsValid() {
+      let isValid = true
+      if (this.name.length === 0) {
+        this.error.name = 'Введите выше имя'
+        isValid = false
+      } else {
+        this.error.name = null
+      }
+      return isValid
+    },
     submitHandler(e) {
-      console.group('form data')
-      console.log('Name', this.name)
-      console.log('Age', this.age)
-      console.log('city', this.city)
-      console.log('relocate', this.relocate)
-      console.log('skills', this.skills)
-      console.groupEnd()
+      if (this.formIsValid()) {
+        console.group('form data')
+        console.log('Name', this.name)
+        console.log('Age', this.age)
+        console.log('city', this.city)
+        console.log('relocate', this.relocate)
+        console.log('skills', this.skills)
+        console.groupEnd()
+      }
     },
   },
 }
