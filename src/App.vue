@@ -15,11 +15,19 @@
 
       <!-- <app-input placeholder="Введи имя" label="Как тебя зовут?"></app-input> -->
 
-      <div class="form-control" :class="{ invalid: error.name }">
+      <!-- <div class="form-control" :class="{ invalid: error.name }">
         <label for="name">Как тебя зовут?</label>
         <input v-model.trim="name" type="text" name="name" id="name" />
         <small v-if="error.name">{{ error.name }}</small>
-      </div>
+      </div> -->
+
+      <app-input
+        v-model="name"
+        placeholder="Введите имя"
+        label="Как тебя зовут?"
+        :error="errors.name"
+      >
+      </app-input>
 
       <div class="form-control">
         <label for="age">Выбери возраст</label>
@@ -78,7 +86,9 @@
 </template>
 
 <script>
+import AppInput from './AppInput'
 export default {
+  components: { AppInput },
   data() {
     return {
       name: '',
@@ -86,7 +96,7 @@ export default {
       city: 'nsk',
       relocate: null,
       skills: [],
-      error: {
+      errors: {
         name: null,
       },
     }
@@ -95,10 +105,10 @@ export default {
     formIsValid() {
       let isValid = true
       if (this.name.length === 0) {
-        this.error.name = 'Введите выше имя'
+        this.errors.name = 'Введите выше имя'
         isValid = false
       } else {
-        this.error.name = null
+        this.errors.name = null
       }
       return isValid
     },
@@ -114,6 +124,7 @@ export default {
       }
     },
   },
+  components: { AppInput },
 }
 </script>
 

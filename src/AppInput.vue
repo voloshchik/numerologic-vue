@@ -1,39 +1,38 @@
 <template>
-  <div class="form-control" :class="{invalid: error}">
+  <div class="form-control" :class="{ invalid: error }">
     <label :for="id">{{ label }}</label>
     <input
-        type="text"
-        :id="id"
-        :placeholder="placeholder"
-        :value="value"
-        @input="change"
-    >
+      type="text"
+      name="name"
+      :id="id"
+      :placeholder="placeholder"
+      :value="modelValue"
+      @input="change"
+    />
     <small v-if="error">{{ error }}</small>
   </div>
 </template>
 
 <script>
 export default {
-  emits: ['update:value'],
+  emits: ['update:modelValue'],
   props: {
-    value: String,
-    placeholder: String,
+    modelValue: String,
+    error: String,
     label: String,
-    error: String
-  },
-  methods: {
-    change(event) {
-      this.$emit('update:value', event.target.value)
-    }
+    placeholder: String,
   },
   data() {
     return {
-      id: 'input-' + Math.random()
+      id: 'input-' + Math.random(),
     }
-  }
+  },
+  methods: {
+    change(event) {
+      this.$emit('update:modelValue', event.target.value)
+    },
+  },
 }
 </script>
 
-<style scoped>
-
-</style>
+<style></style>
