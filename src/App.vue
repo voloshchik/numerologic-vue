@@ -1,101 +1,42 @@
 <template>
   <div class="container">
     <form class="card" @submit.prevent="submitHandler">
-      <h1>Анкета на Vue разработчика!</h1>
-      <!--      <div class="form-control" :class="{invalid: errors.name}">-->
-      <!--        <label for="name">Как тебя зовут?</label>-->
-      <!--        <input-->
-      <!--            type="text"-->
-      <!--            id="name"-->
-      <!--            placeholder="Введи имя"-->
-      <!--            v-model.trim="name"-->
-      <!--        >-->
-      <!--        <small v-if="errors.name">{{ errors.name }}</small>-->
-      <!--      </div>-->
+      <h1>Нумерология</h1>
 
-      <!-- <app-input placeholder="Введи имя" label="Как тебя зовут?"></app-input> -->
-
-      <!-- <div class="form-control" :class="{ invalid: error.name }">
-        <label for="name">Как тебя зовут?</label>
+      <div class="form-control" :class="{ invalid: errors.name }">
+        <label for="name">Как вас зовут?</label>
         <input v-model.trim="name" type="text" name="name" id="name" />
-        <small v-if="error.name">{{ error.name }}</small>
-      </div> -->
-
-      <app-input
-        v-model="name"
-        placeholder="Введите имя"
-        label="Как тебя зовут?"
-        :error="errors.name"
-      >
-      </app-input>
-
-      <div class="form-control">
-        <label for="age">Выбери возраст</label>
-        <input v-model.number="age" type="number" id="age" max="70" />
+        <small v-if="errors.name">{{ errors.name }}</small>
       </div>
 
       <div class="form-control">
-        <label for="city">Твой город</label>
-        <select id="city" v-model="city">
-          <option value="spb">Санкт-Петербург</option>
-          <option value="msk">Москва</option>
-          <option value="kzn">Казань</option>
-          <option value="nsk">Новосибирск</option>
-        </select>
-      </div>
-
-      <div class="form-checkbox">
-        <span class="label">Готов к переезду в Токио?</span>
-        <div class="checkbox">
-          <label><input type="radio" v-model="relocate" name="trip" value="yes" /> Да</label>
-        </div>
-
-        <div class="checkbox">
-          <label><input type="radio" v-model="relocate" name="trip" value="no" /> Нет</label>
-        </div>
-      </div>
-
-      <div class="form-checkbox">
-        <span class="label">Что знаешь во Vue?</span>
-        <div class="checkbox">
-          <label><input type="checkbox" v-model="skills" name="skills" value="vuex" /> Vuex</label>
-        </div>
-        <div class="checkbox">
-          <label
-            ><input type="checkbox" v-model="skills" name="skills" value="cli" /> Vue CLI</label
-          >
-        </div>
-        <div class="checkbox">
-          <label
-            ><input type="checkbox" v-model="skills" name="skills" value="router" /> Vue
-            Router</label
-          >
-        </div>
-      </div>
-
-      <div class="form-checkbox">
-        <span class="label">Правила нашей компании</span>
-        <div class="checkbox">
-          <label><input type="checkbox" /> С правилами согласен</label>
-        </div>
+        <label for="date">Ваша дата рождения?</label>
+        <input type="date" id="date" v-model="date" />
       </div>
 
       <button type="submit" class="btn primary">Отправить</button>
     </form>
+    <app-table></app-table>
+    <app-info></app-info>
   </div>
 </template>
 
 <script>
-import AppInput from './AppInput'
+// const toNumber = (str)=>{
+//   return str..toString()
+//         .split('')
+//         .map(Number)
+// }
+import AppTable from '@/AppTable'
+import AppInfo from '@/component/AppInfo'
+
 export default {
-  components: { AppInput },
+  components: { AppTable, AppInfo },
   data() {
     return {
-      name: '',
-      age: 32,
-      city: 'nsk',
-      relocate: null,
-      skills: [],
+      name: 'irina',
+      date: '1961-11-24',
+
       errors: {
         name: null,
       },
@@ -116,15 +57,46 @@ export default {
       if (this.formIsValid()) {
         console.group('form data')
         console.log('Name', this.name)
-        console.log('Age', this.age)
-        console.log('city', this.city)
-        console.log('relocate', this.relocate)
-        console.log('skills', this.skills)
+        console.log('Date', this.date)
+
         console.groupEnd()
+
+        // this.dateArr = this.date.split('-').reverse()
+        // console.log('dateArr', dateArr)
+        this.pythag(date.value)
       }
     },
+    pythag(str) {
+      const pluseNumber = (num) => {
+        return num
+          .toString()
+          .split('')
+          .map(Number)
+          .reduce((acc, num) => (acc += num))
+      }
+
+      const dateArr = str
+        .split('-')
+        .reverse()
+        .map(Number) //
+      console.log(dateArr)
+      const numOne = dateArr
+        .join('')
+        .split('')
+        .map(Number)
+        .reduce((acc, num) => (acc += num))
+      console.log(numOne)
+      const numTwo = pluseNumber(numOne)
+      console.log(numTwo)
+      const firstNuber = +dateArr.join('')[0]
+      const numThree = numOne - firstNuber * 2
+      console.log(numThree)
+
+      const numFour = pluseNumber(numThree)
+      console.log(numFour)
+    },
   },
-  components: { AppInput },
+  computed() {},
 }
 </script>
 
