@@ -22,47 +22,40 @@
 </template>
 
 <script>
+const filter = (arr, num) => {
+  return arr.filter((n) => n === num).length
+}
 export default {
-  mounted() {
-    console.log(this.nums)
-  },
-  data() {
-    return {
-      nums: [],
-    }
-  },
+  props: ['numberMatrix'],
+  mounted() {},
+
   computed: {
     one() {
-      const num = this.nums
-        .toString()
-        .split('')
-        .map(Number)
-        .filter((n) => n == 1).length
-      return 111
+      return filter(this.numberMatrix, 1)
     },
     two() {
-      return 2
+      return filter(this.numberMatrix, 2)
     },
     three() {
-      return 3
+      return filter(this.numberMatrix, 3)
     },
     four() {
-      return 4
+      return filter(this.numberMatrix, 4)
     },
     five() {
-      return 5
+      return filter(this.numberMatrix, 5)
     },
     six() {
-      return 6
+      return filter(this.numberMatrix, 6)
     },
     seven() {
-      return 7
+      return filter(this.numberMatrix, 7)
     },
     eight() {
-      return 8
+      return filter(this.numberMatrix, 8)
     },
     nine() {
-      return 9
+      return filter(this.numberMatrix, 9)
     },
   },
 }

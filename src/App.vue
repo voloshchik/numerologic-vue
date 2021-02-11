@@ -19,7 +19,7 @@
     <div class="card">
       <button class="btn" @click="debag">Debag</button>
     </div>
-    <app-table></app-table>
+    <app-table :numberMatrix="matrixNums"></app-table>
     <app-info></app-info>
   </div>
 </template>
@@ -106,8 +106,8 @@ export default {
         .join('')
         .split('')
         .map(Number)
-      console.log('oneString', oneString)
-      console.log('twoString', twoString)
+      // console.log('oneString', oneString)
+      // console.log('twoString', twoString)
       const result = [...oneString, ...twoString]
 
       this.matrixNums = result
