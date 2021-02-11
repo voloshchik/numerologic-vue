@@ -28,7 +28,7 @@ export default {
   },
   data() {
     return {
-      nums: 1112345326678,
+      nums: [],
     }
   },
   computed: {

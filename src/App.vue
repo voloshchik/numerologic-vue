@@ -16,6 +16,9 @@
 
       <button type="submit" class="btn primary">Отправить</button>
     </form>
+    <div class="card">
+      <button class="btn" @click="debag">Debag</button>
+    </div>
     <app-table></app-table>
     <app-info></app-info>
   </div>
@@ -32,10 +35,12 @@ import AppInfo from '@/component/AppInfo'
 
 export default {
   components: { AppTable, AppInfo },
+
   data() {
     return {
       name: 'irina',
       date: '1961-11-24',
+      matrixNums: [],
 
       errors: {
         name: null,
@@ -73,27 +78,42 @@ export default {
           .split('')
           .map(Number)
           .reduce((acc, num) => (acc += num))
+          .toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
       }
 
-      const dateArr = str
-        .split('-')
-        .reverse()
-        .map(Number) //
-      console.log(dateArr)
+      const dateArr = str.split('-').reverse()
+      // .map(Number) //
+
       const numOne = dateArr
         .join('')
         .split('')
         .map(Number)
         .reduce((acc, num) => (acc += num))
-      console.log(numOne)
+
       const numTwo = pluseNumber(numOne)
-      console.log(numTwo)
-      const firstNuber = +dateArr.join('')[0]
+
+      const firstNuber = dateArr.join('')[0]
+
       const numThree = numOne - firstNuber * 2
-      console.log(numThree)
 
       const numFour = pluseNumber(numThree)
-      console.log(numFour)
+
+      const oneString = dateArr
+        .join('')
+        .split('')
+        .map(Number)
+      const twoString = [numOne, numTwo, numThree, numFour]
+        .join('')
+        .split('')
+        .map(Number)
+      console.log('oneString', oneString)
+      console.log('twoString', twoString)
+      const result = [...oneString, ...twoString]
+
+      this.matrixNums = result
+    },
+    debag() {
+      console.log('this.matrixNum', this.matrixNums)
     },
   },
   computed() {},
