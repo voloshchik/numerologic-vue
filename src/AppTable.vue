@@ -3,19 +3,19 @@
     <h1>Квадрат Пифагора (психоматрица) для рассматриваемой даты</h1>
     <table>
       <tr>
-        <td>{{ one }}</td>
-        <td>{{ two }}</td>
-        <td>{{ three }}</td>
+        <td>1({{ one }})</td>
+        <td>2({{ two }})</td>
+        <td>3({{ three }})</td>
       </tr>
       <tr>
-        <td>{{ four }}</td>
-        <td>{{ five }}</td>
-        <td>{{ six }}</td>
+        <td>4({{ four }})</td>
+        <td>5({{ five }})</td>
+        <td>6({{ six }})</td>
       </tr>
       <tr>
-        <td>{{ seven }}</td>
-        <td>{{ eight }}</td>
-        <td>{{ nine }}</td>
+        <td>7({{ seven }})</td>
+        <td>8({{ eight }})</td>
+        <td>9({{ nine }})</td>
       </tr>
     </table>
   </div>

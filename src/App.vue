@@ -14,11 +14,11 @@
         <input type="date" id="date" v-model="date" />
       </div>
 
-      <button type="submit" class="btn primary">Отправить</button>
+      <button type="submit" class="btn primary">РАССЧИТА́ТЬ</button>
     </form>
-    <div class="card">
+    <!-- <div class="card">
       <button class="btn" @click="debag">Debag</button>
-    </div>
+    </div> -->
     <app-table :numberMatrix="matrixNums"></app-table>
     <app-info></app-info>
   </div>
